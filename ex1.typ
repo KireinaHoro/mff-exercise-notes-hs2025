@@ -10,11 +10,11 @@ Recap of key concepts plus several examples that will help with solving Exercise
 === $sigma$-algebra
 
 #definition[
-  Let $Omega eq.not diameter$ be a set and let $cal(F) subset.eq 2^Omega$#footnote[$2^Omega$ denotes the power set of $Omega$.].  $cal(F)$ is called a *$sigma$-algebra* if:
+  Let $Omega != diameter$ be a set and let $cal(F) subset.eq 2^Omega$#footnote[$2^Omega$ denotes the power set of $Omega$.].  $cal(F)$ is called a *$sigma$-algebra* if:
   
   1. $diameter in cal(F)$
-  2. $A in cal(F) arrow.r.double A^c in cal(F)$ #footnote[$A^c$ denotes the complement of $A$ (in the implicit full set $Omega$).]
-  3. $(A_n)_(n in NN)$ s.t. $ A_n in cal(F) arrow.r.double union.big_(n in NN) A_n in cal(F) $
+  2. $A in cal(F) => A^c in cal(F)$ #footnote[$A^c$ denotes the complement of $A$ (in the implicit full set $Omega$).]
+  3. $(A_n)_(n in NN)$ s.t. $ A_n in cal(F) => union.big_(n in NN) A_n in cal(F) $
 ]
 
 === Mesurable space
@@ -27,22 +27,22 @@ Recap of key concepts plus several examples that will help with solving Exercise
 
 #definition[
   Let $(Omega, cal(F))$ and $(tilde(Omega), tilde(cal(F)))$ be two measurable spaces.
-  A map $f : (Omega, cal(F)) arrow.r (tilde(Omega), tilde(cal(F)))$ is *measureable* if for every $B in tilde(cal(F))$#footnote[
-    $B in tilde(cal(F)) arrow.r.double B subset.eq tilde(Omega)$.  Intuitively, $B$ is an _event_ in the $sigma$-algebra that defines _all events_.
+  A map $f : (Omega, cal(F)) -> (tilde(Omega), tilde(cal(F)))$ is *measureable* if for every $B in tilde(cal(F))$#footnote[
+    $B in tilde(cal(F)) => B subset.eq tilde(Omega)$.  Intuitively, $B$ is an _event_ in the $sigma$-algebra that defines _all events_.
   ], $ f^(-1)(B)#footnote[
-    $f^(-1)(B)$ is *not* the inverse function $tilde(Omega) arrow.r Omega$, but the *preimage map* $2^(tilde(Omega)) arrow.r 2^Omega$.  When we only concern measurable maps (i.e. random variables), this decays to $tilde(cal(F)) arrow.r tilde(F)$.
+    $f^(-1)(B)$ is *not* the inverse function $tilde(Omega) -> Omega$, but the *preimage map* $2^(tilde(Omega)) -> 2^Omega$.  When we only concern measurable maps (i.e. random variables), this decays to $tilde(cal(F)) -> tilde(F)$.
   ] := { omega in Omega | f(omega) in B } in cal(F). $
 ]
 
 #definition[
   A *random variable*#footnote[
     We talk about real-valued random variables here.
-  ] is a measurable function $X(Omega, cal(F)) arrow.r (RR, B(RR))$#footnote[
+  ] is a measurable function $X(Omega, cal(F)) -> (RR, B(RR))$#footnote[
     $B(RR)$ is the Borel $sigma$-algebra over $RR$.
   ].
 ]
 
-Indicator function $bb(1)_A: Omega arrow.r RR$ is a handy random variable defined as:
+Indicator function $bb(1)_A: Omega -> RR$ is a handy random variable defined as:
 
 $ bb(1)_A(omega) := cases(
     1 "if" omega in A,
@@ -53,10 +53,10 @@ $bb(1)_A$ is $B(RR)$-measurable iff. $A in cal(F)$.
 
 === Probability
 
-A measure $mu$ on $(Omega, cal(F))$ is a mapping, if $mu : cal(F) arrow.r [0, +infinity]$ s.t.:
+A measure $mu$ on $(Omega, cal(F))$ is a mapping, if $mu : cal(F) -> [0, +infinity]$ s.t.:
 
 1. $mu(diameter) = 0$
-2. $(A_n)_(n in NN)$ s.t. $ A_n in cal(F), A_i inter A_j = diameter " " forall i eq.not j arrow.r.double mu(union.big_(n in NN) A_n) = sum_(n in NN)mu(A_n) $.
+2. $(A_n)_(n in NN)$ s.t. $ A_n in cal(F), A_i inter A_j = diameter " " forall i != j => mu(union.big_(n in NN) A_n) = sum_(n in NN)mu(A_n) $.
 
 #definition[
   $P$ is a *probability* if it is a measure and $P(Omega)=1$.
@@ -84,17 +84,17 @@ P := lambda(Omega)#footnote[
 
 === Almost surely
 
-- $X: Omega arrow.r RR$, $X(omega) := 1_{0}(omega)$ for every $omega in Omega$;
+- $X: Omega -> RR$, $X(omega) := 1_{0}(omega)$ for every $omega in Omega$;
 
   $X$ is a random variable, since ${0} in cal(F)$ (therefore $X$ is $cal(F)$-measurable).
 
-- $Y: Omega arrow.r RR$, $Y(omega) := 0$ for every $omega in Omega$.
+- $Y: Omega -> RR$, $Y(omega) := 0$ for every $omega in Omega$.
 
 Observations:
 - $X = Y$ for every $omega in Omega$ is *false*
 - $X = Y$ $P$-a.s. is *true*:
   
-  $P(X = Y) = 1 - P(X eq.not Y) = 1$, since $lambda({0}) = 0$.
+  $P(X = Y) = 1 - P(X != Y) = 1$, since $lambda({0}) = 0$.
   
 === $P$-trivial
 
@@ -104,20 +104,20 @@ Take $cal(F)_0 subset.eq cal(F)$.  $cal(F)_0$ is $P$-trivial if $P(A) in {0, 1}$
   $cal(F)_0$ is $P$-trivial iff. for every random variable $X$ that is $cal(F)_0$-measurable, $X$ is $P$-a.s. constant. 
 ]
 
-_Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega arrow.r RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s. constant.  Since $bb(1)_A$ is 1 or 0,
+_Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s. constant.  Since $bb(1)_A$ is 1 or 0,
 
-- if $P(1_(A)(dot.op)=1)=1 arrow.r.double P(A)=1$;
-- otherwise, $P(1_(A)(dot.op)=0)=1 arrow.r.double P(A)=0$.
+- if $P(1_(A)(dot.op)=1)=1 => P(A)=1$;
+- otherwise, $P(1_(A)(dot.op)=0)=1 => P(A)=0$.
 
-$arrow.r.double P(A) in {0, 1}, qed.$
+$=> P(A) in {0, 1}, qed.$
 
-_Proof_ $arrow.r.double$: left as exercise.
+_Proof_ $=>$: left as exercise.
 
 === 2-step binomial model
 
 Take $Omega := {U U, U D, D U, D D}$, $cal(F) := 2^Omega, P(dot.op) := 1/4$.
 
-Define $y_1, y_2:Omega arrow.r RR$, s.t.
+Define $y_1, y_2:Omega -> RR$, s.t.
 
 $ y_1(U U) = y_1(U D) = 2, y_1(D U) = y_1(D D) = 1/2 $
 $ y_2(U U) = y_2(D U) = 2, y_2(U D) = y_2(D D) = 1/2 $
@@ -167,7 +167,7 @@ Progression of $X(omega)$ for different outcomes of $omega in Omega$:
 
 Define two $sigma$-algebras:
 
-- $cal(F)_k = sigma(X_i : 0 lt.eq i lt.eq k)$
+- $cal(F)_k = sigma(X_i : 0 <= i <= k)$
 - $cal(G)_k = sigma(X_k)$
 
 $cal(G)_0 = {diameter, Omega} = cal(F)_0$
