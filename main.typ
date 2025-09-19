@@ -12,5 +12,10 @@
 #show: note_page.with(title, author, professor, creater, time, abstract)
 
 #set footnote(numbering: "[1]")
+#set enum(numbering: "(a)")
 
+// Notes during exercise sessions
 #include "ex1.typ"
+
+// My solutions to exercise sheets
+#include "attempts/ex-sheet1.typ"

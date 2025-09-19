@@ -53,6 +53,28 @@
   body, class: "Corollary", fill: rgb("#F7FBFC"), stroke: rgb("#769FCD")
 )
 
+// Commands for exercise sheets
+#let note_block_nonumber(body, class: "Block", fill: rgb("#FFFFFF"), stroke: rgb("#000000")) = {
+  v(2pt)
+  text(12pt, weight: "bold")[#class]
+  v(-8pt)
+
+  block(fill:fill,
+  width: 100%,
+  inset:8pt,
+  radius: 4pt,
+  stroke:stroke,
+  body)
+}
+
+#let attempt(body) = note_block_nonumber(
+  body, class: "Attempt", fill: rgb("#F7FBFC"), stroke: rgb("#769FCD")
+)
+
+#let feedback(body) = note_block_nonumber(
+  body, class: "Feedback", fill: rgb("#FEF2F4"), stroke: rgb("#EE6983")
+)
+
 
 /* Figures */
 // The numbering policy is as before, and the default display is centered

@@ -12,9 +12,9 @@ Recap of key concepts plus several examples that will help with solving Exercise
 #definition[
   Let $Omega != diameter$ be a set and let $cal(F) subset.eq 2^Omega$#footnote[$2^Omega$ denotes the power set of $Omega$.].  $cal(F)$ is called a *$sigma$-algebra* if:
   
-  1. $diameter in cal(F)$
-  2. $A in cal(F) => A^c in cal(F)$ #footnote[$A^c$ denotes the complement of $A$ (in the implicit full set $Omega$).]
-  3. $(A_n)_(n in NN)$ s.t. $ A_n in cal(F) => union.big_(n in NN) A_n in cal(F) $
+  + $diameter in cal(F)$
+  + $A in cal(F) => A^c in cal(F)$ #footnote[$A^c$ denotes the complement of $A$ (in the implicit full set $Omega$).]
+  + $(A_n)_(n in NN)$ s.t. $ A_n in cal(F) => union.big_(n in NN) A_n in cal(F) $
 ]
 
 === Mesurable space
