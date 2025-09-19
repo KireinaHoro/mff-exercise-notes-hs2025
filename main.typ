@@ -16,6 +16,3 @@
 
 // Notes during exercise sessions
 #include "ex1.typ"
-
-// My solutions to exercise sheets
-#include "attempts/ex-sheet1.typ"

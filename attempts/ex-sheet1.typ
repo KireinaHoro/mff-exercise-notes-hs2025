@@ -1,8 +1,9 @@
 #import "../template.typ": attempt, feedback
+#import "exsheet-template.typ": *
 
-= Submission Exercise Sheet 1
+#show: exsheet.with(1)
 
-== Exercise 1.1
+#exercise()
 
 Let $(Omega, cal(F))$ be the measurable space consisting of the sample space $Omega := {H, T}^2$ of all sequences of two coin tosses and the power set $cal(F) := 2^Omega$.  We consider the coordinate random variables
 
@@ -51,3 +52,5 @@ $ S_0 := 0, quad S_1 := bb(1)_{X_1=H}, quad S_2 := sum_(i=1)^2 bb(1)_{X_i=H}. $
 #attempt[
   
 ]
+
+#exercise()

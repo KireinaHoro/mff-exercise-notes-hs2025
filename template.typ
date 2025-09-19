@@ -153,7 +153,7 @@
 
     // Font size and white space
     #set text(20pt, weight: "bold")
-    #block[Chapter #counter(heading).display(): #it.body]
+    #block[#it.body]
     #v(25pt)
     #h1_marker.step()
   ]
