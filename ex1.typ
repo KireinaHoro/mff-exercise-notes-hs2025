@@ -131,7 +131,7 @@ Progression of $X(omega)$ for different outcomes of $omega in Omega$:
     digraph {
       rankdir=LR;
       edge [arrowhead=none];
-      node [shape=circle, label="", width=0.1, labeldistance=2.5];
+      node [shape=circle, label="", width=0.05, style=filled, fillcolor=black, labeldistance=2.5];
       splines=line;
 
       C0[style=invis, width=0, label="", xlabel="X_0"];
