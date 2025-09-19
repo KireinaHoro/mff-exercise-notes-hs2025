@@ -25,13 +25,19 @@ Recap of key concepts plus several examples that will help with solving Exercise
 
 === Random variable
 
-Let $(Omega, cal(F))$ and $(tilde(Omega), tilde(cal(F)))$ be two measurable spaces.
- Function $f : (Omega, cal(F)) arrow.r (tilde(Omega), tilde(cal(F)))$ is measureable if for every $B in tilde(cal(F))$#footnote[
-  $B in tilde(cal(F)) arrow.r.double B subset.eq tilde(Omega)$.  Intuitively, $B$ is an _event_ in the $sigma$-algebra that defines _all events_.
-], $f^(-1)(B) = { omega in Omega | f(omega) in B } in cal(F)$.
+#definition[
+  Let $(Omega, cal(F))$ and $(tilde(Omega), tilde(cal(F)))$ be two measurable spaces.
+  A map $f : (Omega, cal(F)) arrow.r (tilde(Omega), tilde(cal(F)))$ is *measureable* if for every $B in tilde(cal(F))$#footnote[
+    $B in tilde(cal(F)) arrow.r.double B subset.eq tilde(Omega)$.  Intuitively, $B$ is an _event_ in the $sigma$-algebra that defines _all events_.
+  ], $ f^(-1)(B)#footnote[
+    $f^(-1)(B)$ is *not* the inverse function $tilde(Omega) arrow.r Omega$, but the *preimage map* $2^(tilde(Omega)) arrow.r 2^Omega$.  When we only concern measurable maps (i.e. random variables), this decays to $tilde(cal(F)) arrow.r tilde(F)$.
+  ] := { omega in Omega | f(omega) in B } in cal(F). $
+]
 
 #definition[
-  A *random variable* is a measurable function $X(Omega, cal(F)) arrow.r (RR, B(RR))$#footnote[
+  A *random variable*#footnote[
+    We talk about real-valued random variables here.
+  ] is a measurable function $X(Omega, cal(F)) arrow.r (RR, B(RR))$#footnote[
     $B(RR)$ is the Borel $sigma$-algebra over $RR$.
   ].
 ]
@@ -124,20 +130,29 @@ Progression of $X(omega)$ for different outcomes of $omega in Omega$:
   ```dot
     digraph {
       rankdir=LR;
+      edge [arrowhead=none];
+      node [shape=circle, label="", width=0.1, labeldistance=2.5];
+      splines=line;
 
-      // Level 0
-      N0[label="X_0 = 8"];
+      C0[style=invis, width=0, label="", xlabel="X_0"];
+      N0[xlabel="8"];
+      {rank=same; C0; N0; }
 
-      // Level 1
-      N1[label="X_1 = 16"];
-      N2[label="X_1 = 4"];
+      C1[style=invis, width=0, label="", xlabel="X_1"];
+      N1[xlabel="16"];
+      N2[xlabel="4"];
+      {rank=same; C1; N1; N2; }
 
-      // Level 2
-      N3[label="X_2 = 32"];
-      N4[label="X_2 = 8"];
-      N5[label="X_2 = 2"];
+      C2[style=invis, width=0, label="", xlabel="X_2"];
+      N3[xlabel="32"];
+      N4[xlabel="8"];
+      N5[xlabel="2"];
+      {rank=same; C2; N3; N4; N5; }
 
-      // Edges with labels
+      // align labels
+      C0 -> C1 [style=invis, weight=10];
+      C1 -> C2 [style=invis, weight=10];
+
       N0 -> N1 [label="UU, UD"];
       N0 -> N2 [label="DU, DD"];
       
