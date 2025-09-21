@@ -62,7 +62,7 @@ A measure $mu$ on $(Omega, cal(F))$ is a mapping, if $mu : cal(F) -> [0, +infini
   $P$ is a *probability* if it is a measure and $P(Omega)=1$.
 ]
 
-== Probability space
+=== Probability space
 
 #definition[
   $(Omega, cal(F), P)$ is a *probability space*.
@@ -92,7 +92,7 @@ P := lambda(Omega)#footnote[
 
 Observations:
 - $X = Y$ for every $omega in Omega$ is *false*
-- $X = Y$ $P$-a.s. is *true*:
+- $X = Y$ $P$-a.s.~is *true*:
   
   $P(X = Y) = 1 - P(X != Y) = 1$, since $lambda({0}) = 0$.
   
@@ -101,10 +101,10 @@ Observations:
 Take $cal(F)_0 subset.eq cal(F)$.  $cal(F)_0$ is $P$-trivial if $P(A) in {0, 1}$ for every $A in cal(F)_0$.
 
 #corollary[
-  $cal(F)_0$ is $P$-trivial iff. for every random variable $X$ that is $cal(F)_0$-measurable, $X$ is $P$-a.s. constant. 
+  $cal(F)_0$ is $P$-trivial iff. for every random variable $X$ that is $cal(F)_0$-measurable, $X$ is $P$-a.s.~constant. 
 ]
 
-_Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s. constant.  Since $bb(1)_A$ is 1 or 0,
+_Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s.~constant.  Since $bb(1)_A$ is 1 or 0,
 
 - if $P(1_(A)(dot.op)=1)=1 => P(A)=1$;
 - otherwise, $P(1_(A)(dot.op)=0)=1 => P(A)=0$.

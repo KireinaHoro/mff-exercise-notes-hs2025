@@ -1,7 +1,7 @@
 #let exercise() = {
   let counter = counter("Exercise")
 
-  context [== Exercise #counter.display("1.1")]
+  context [*Exercise #counter.display("1.1") #h(.5em)*]
   counter.step(level: 2)
 }
 
@@ -24,7 +24,7 @@
   let counter = counter("Exercise")
   counter.update((number, 1))
   
-  [= Exercise Sheet #number]
+  [= Exercise Sheet #number Submission]
   
   body
 }
