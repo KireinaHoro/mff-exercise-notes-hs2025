@@ -111,7 +111,7 @@ _Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$. 
 
 $=> P(A) in {0, 1}, qed.$
 
-_Proof_ $=>$: left as exercise.
+_Proof_ $=>$: left as exercise.  Solved as _lemma 2_ in Exercise 1.3.c.
 
 === 2-step binomial model
 
