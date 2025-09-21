@@ -104,14 +104,14 @@ Take $cal(F)_0 subset.eq cal(F)$.  $cal(F)_0$ is $P$-trivial if $P(A) in {0, 1}$
   $cal(F)_0$ is $P$-trivial iff. for every random variable $X$ that is $cal(F)_0$-measurable, $X$ is $P$-a.s.~constant. 
 ]
 
-_Proof_ $arrow.l.double$: let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s.~constant.  Since $bb(1)_A$ is 1 or 0,
+_Proof_ $arrow.l.double$: Let $A in cal(F)_0$, consider $bb(1)_A: Omega -> RR$.  $bb(1)_A$ is a $cal(F)_0$-measurable random variable and is $P$-a.s.~constant.  Since $bb(1)_A$ is 1 or 0,
 
 - if $P(1_(A)(dot.op)=1)=1 => P(A)=1$;
 - otherwise, $P(1_(A)(dot.op)=0)=1 => P(A)=0$.
 
 $=> P(A) in {0, 1}, qed.$
 
-_Proof_ $=>$: left as exercise.  Solved as _lemma 2_ in Exercise 1.3.c.
+_Proof_ $=>$: Left as exercise.  Solved as _lemma 2_ in Exercise 1.3.c.
 
 === 2-step binomial model
 

@@ -114,7 +114,7 @@ is called the _conditional expectation of $X$ given $cal(G)$_ and is denoted by 
 #attempt[
   _Lemma 1_: $E[X|cal(G)]$ is unique $P$-a.s.
 
-  _Proof_: suppose $Z_1, Z_2$ both satisfy the definition i.e.~$E[Z_k bb(1)_A] = E[X bb(1)_A] quad forall A in cal(G)$ for $k=1,2$.  Hence,
+  _Proof_: Suppose $Z_1, Z_2$ both satisfy the definition i.e.~$E[Z_k bb(1)_A] = E[X bb(1)_A] quad forall A in cal(G)$ for $k=1,2$.  Hence,
   $0 = E[(Z_1 - Z_2) bb(1)_A]
      = integral_Omega (Z_1 - Z_2) bb(1)_A dd(P)
      = integral_A Z_1 - Z_2 dd(P)$.
