@@ -136,12 +136,12 @@ $ cal(F)_tau := {A in cal(F): A inter {tau <= k} in cal(F)_k "for all" k=0,1,2,.
   Hence $A_sigma inter {tau <= k} = A_sigma inter {tau <= k} inter {sigma <= k} in cal(F)_k => A_sigma in cal(F)_tau forall A_sigma in cal(F)_sigma => cal(F)_sigma subset.eq cal(F)_tau. quad qed$
 ]
 
-3. Let $Lambda in cal(F)_tau$ and define
+3. Let $Lambda in cal(F)_tau$ and define #h(1fr)
 
-$ sigma_Lambda (omega) := cases(
-  tau(omega) & "if" omega in Lambda,
-  infinity   & "if" omega in.not Lambda.
-) $
+   $ sigma_Lambda (omega) := cases(
+     tau(omega) & "if" omega in Lambda\,,
+     infinity   & "if" omega in.not Lambda.
+   ) $
 
   Show that $sigma_Lambda$ is a stopping time.
 
@@ -175,11 +175,11 @@ where we use the convention that $inf diameter = +infinity.$
   Hence ${tau <= k+1} = {tau <= k} union {tau = k+1} in cal(F)_(k+1).  quad qed$
 ]
 
-2. Prove that $phi = (phi^0, theta.alt)$, where
-$
-phi^0_0 = 0, quad phi^0_k := bb(1)_{k<=tau} quad "for" k=1, ..., T,\
-theta.alt_0 = 0, quad theta.alt_k := -bb(1)_{k<=tau} quad "for" k=1, ..., T,
-$ is a trading strategy.
+2. Prove that $phi = (phi^0, theta.alt)$, where #h(1fr)
+  $
+  phi^0_0 = 0, quad phi^0_k := bb(1)_{k<=tau} quad "for" k=1, ..., T,\
+  theta.alt_0 = 0, quad theta.alt_k := -bb(1)_{k<=tau} quad "for" k=1, ..., T,
+  $ is a trading strategy.
 
 #attempt[
   ${k <= tau} = {tau < k}^c = {tau <= k-1}^c in cal(F)_(k-1).$  Therefore both $phi^0_k$ and $theta.alt_k$ are $cal(F)_(k-1)$-measurable, hence
