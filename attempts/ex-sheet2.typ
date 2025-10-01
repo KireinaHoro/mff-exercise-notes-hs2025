@@ -42,22 +42,20 @@ $ cal(F)_k := sigma(tilde(S)_0^1, tilde(S)_1^1, ..., tilde(S)_k^1). $
   Hence $cal(F)'_k subset.eq cal(F)_k and cal(F)_k subset.eq cal(F)'_k => cal(F)'_k = cal(F)_k.  quad qed$
 ]
 
-#pagebreak()
-
 2. Consider a positive $FF$-adapted process $D = (D_k)_(k=0,...,T)$ and define
 
   $ dash(S)_k^i := S_k^i D_k quad "for" k=0,...,T. $
 
-  where $S^i := tilde(S)^i \/ tilde(S)^0$ is the discounted asset price for $i=0,1$.  For any trading strategy $phi=(phi^0, theta)$, show that the discounted cost process $C(phi)$ is constant over time if and only if the cost process $dash(C)(phi)$ with
+  where $S^i := tilde(S)^i \/ tilde(S)^0$ is the discounted asset price for $i=0,1$.  For any trading strategy $phi=(phi^0, theta.alt)$, show that the discounted cost process $C(phi)$ is constant over time if and only if the cost process $dash(C)(phi)$ with
 
-  $ Delta dash(C)_k (phi) := (phi_k^0 - phi_(k-1)^0) dash(S)_(k-1)^0 + (theta_k - theta_(k-1)) dash(S)_(k-1)^1 quad "for" k=1,...,T $
+  $ Delta dash(C)_k (phi) := (phi_k^0 - phi_(k-1)^0) dash(S)_(k-1)^0 + (theta.alt_k - theta.alt_(k-1)) dash(S)_(k-1)^1 quad "for" k=1,...,T $
 
   is constant over time.
 
 #attempt[
-  $C(phi)$ is constant over time $<=> Delta C_k (phi) = (phi^0_k - phi^0_(k-1)) S^0 + (theta_k - theta_(k-1)) S^1_(k-1) = 0 quad forall k = 1, ..., T.$
+  $C(phi)$ is constant over time $<=> Delta C_k (phi) = (phi^0_k - phi^0_(k-1)) S^0 + (theta.alt_k - theta.alt_(k-1)) S^1_(k-1) = 0 quad forall k = 1, ..., T.$
 
-  $Delta dash(C)_k (phi) &= (phi^0_k - phi^0_(k-1)) dash(S)^0_(k-1) + (theta_k - theta_(k-1)) dash(S)^1_(k-1) \
+  $Delta dash(C)_k (phi) &= (phi^0_k - phi^0_(k-1)) dash(S)^0_(k-1) + (theta.alt_k - theta.alt_(k-1)) dash(S)^1_(k-1) \
   &= D_(k-1) Delta C(phi)$
 
   $dash(C) (phi)$ is constant over time $<=> Delta dash(C)_k (phi) = 0 <=> Delta C_k (phi) = 0 <=>$ $C(phi)$ is constant over time.  $qed$
@@ -82,7 +80,7 @@ $ cal(F)_k := sigma(tilde(S)_0^1, tilde(S)_1^1, ..., tilde(S)_k^1). $
 3. Suppose $0 < alpha < 1$.  Is $alpha tau$ a stopping time?
 
 #attempt[
-  Not necessarily: take $alpha = 1/2$ and ${tau <= T} in cal(F)_T$, ${tau <= 2T} in.not cal(F)_T.$
+  Not necessarily: take $alpha = 1/2$ and $cal(F)_k = sigma({tau <= k})$.  Then ${alpha tau <= 1} = {tau <= 2} in.not cal(F)_1$.
 ]
 
 4. Show that a function $sigma:Omega->NN union {infinity}$ is an $FF$-stopping time if and only if ${sigma = k} in cal(F)_k$ for all $k in NN$.
@@ -110,5 +108,110 @@ $ cal(F)_k := sigma(tilde(S)_0^1, tilde(S)_1^1, ..., tilde(S)_k^1). $
 6. Suppose $tau >= sigma$.  Is $tau - sigma$ a stopping time?
 
 #attempt[
-  Not necessarily:
+  Not necessarily: let $Omega = {omega_0, omega_1}$ and $cal(F)_0 = {diameter, Omega}, cal(F)_1 = cal(F)_2 = 2^Omega.$
+  
+  Let $tau(omega_0) = 1$ and $tau(omega_1) = 2$; let $sigma(dot.op) = 1$.  Then ${tau - omega <= 0} = {omega_1}$ but is not in $cal(F)_0$.
+]
+
+#exercise() Consider a probability space $(Omega, cal(F), P)$ with a filtration $FF = (cal(F)_n)_(n=0,1,2,...)$
+and let $tau: Omega -> NN union {infinity}$ be a stopping time.  We define
+
+$ cal(F)_tau := {A in cal(F): A inter {tau <= k} in cal(F)_k "for all" k=0,1,2,...}. $
+
+1. Show that $cal(F)_tau$ is a $sigma$-algebra.
+
+#attempt[
+  - $diameter inter {tau <= k} = diameter in cal(F)_k quad forall k in NN => diameter in cal(F)_tau.$
+  - Given $A in cal(F)_tau$, $A inter {tau <= k} in cal(F)_k quad forall k in NN$.  \
+    Since $tau$ is a stopping time, $(A^c inter {tau <= k})^c = A union {tau <= k}^c in cal(F)_k => A^c in cal(F)_tau.$
+  - Given $(A_n)_(n in NN)$ where $A_i in cal(F)_tau$, $(union_(n in NN) A_n) inter {tau <= k} = union_(n in NN) (A_n inter {tau <= k})$. \
+    Since $A_n inter {tau <= k} in cal(F)_k$, the union also $in cal(F)_k$.  $qed$
+]
+
+2. Suppose $sigma, tau$ are two $FF$-stopping times with $sigma(omega) <= tau(omega)$ for all $omega in Omega$.  Show that $cal(F)_sigma subset.eq cal(F)_tau.$
+
+#attempt[
+  Given any $A_sigma in cal(F)_sigma$, $A_sigma inter {sigma <= k} in cal(F)_k forall k in NN. quad sigma(dot.op) <= tau(dot.op) => {tau <= k} subset.eq {sigma <= k}.$
+
+  Hence $A_sigma inter {tau <= k} = A_sigma inter {tau <= k} inter {sigma <= k} in cal(F)_k => A_sigma in cal(F)_tau forall A_sigma in cal(F)_sigma => cal(F)_sigma subset.eq cal(F)_tau. quad qed$
+]
+
+3. Let $Lambda in cal(F)_tau$ and define
+
+$ sigma_Lambda (omega) := cases(
+  tau(omega) & "if" omega in Lambda,
+  infinity   & "if" omega in.not Lambda.
+) $
+
+  Show that $sigma_Lambda$ is a stopping time.
+
+#attempt[
+  $Lambda inter {tau <= k} in cal(F)_k quad forall k in NN.$
+
+  ${ sigma_Lambda (omega) <= k } = cases(
+    {tau <= k} & "if" omega in Lambda,
+    diameter   & "if" omega in.not Lambda
+  ) = ({tau <= k} inter Lambda) union (diameter inter Lambda^c) = Lambda inter {tau <= k} in cal(F)_k. quad qed$
+]
+
+#exercise() Fix a probability space $(Omega, cal(F), P)$ and a finite time horizon $T >= 2$.  Consider the market model in which the discounted bank account process
+$S^0$ and the discounted stock process $S^1$ evolve according to
+$ S^0 eq.triple 1 quad "and" quad S^1_0 := s^1_0, quad S^1_k := S^1_0 product_(j=1)^k Y_j quad "for" k=1,...,T, $
+where $s^1_0 > 0$ is constant and $(Y_j)_(j=1,...,T)$ is a family of i.i.d.~random variables uniformly distributed on $(0, 2)$.
+Let $FF=(cal(F)_k)_(k=0,...,T)$ be the filtration defined by $cal(F)_0 := {diameter, Omega}$ and $cal(F)_k := sigma(Y_1, ..., Y_k)$
+for $k=1,...,T$.  Consider the random variable 
+$ tau := inf{k=1,...,T: Y_k > 1} and T, $
+where we use the convention that $inf diameter = +infinity.$
+
+1. Show that $tau$ is a stopping time.
+
+#attempt[
+  Prove by induction. Since $tau >= 1$, ${tau <= 0} = diameter in cal(F)_0$ trivially holds.
+
+  Given ${tau <= k} in cal(F)_k subset.eq cal(F)_(k+1).$
+
+  ${tau = k+1} = {Y_1, ..., Y_k <= 1, Y_(k+1) > 1} in cal(F)_(k+1) = sigma(Y_1, ..., Y_(k+1))$.
+
+  Hence ${tau <= k+1} = {tau <= k} union {tau = k+1} in cal(F)_(k+1).  quad qed$
+]
+
+2. Prove that $phi = (phi^0, theta.alt)$, where
+$
+phi^0_0 = 0, quad phi^0_k := bb(1)_{k<=tau} quad "for" k=1, ..., T,\
+theta.alt_0 = 0, quad theta.alt_k := -bb(1)_{k<=tau} quad "for" k=1, ..., T,
+$ is a trading strategy.
+
+#attempt[
+  ${k <= tau} = {tau < k}^c = {tau <= k-1}^c in cal(F)_(k-1).$  Therefore both $phi^0_k$ and $theta.alt_k$ are $cal(F)_(k-1)$-measurable, hence
+  $phi^0$ and $theta.alt$ are $FF$-predictable, $phi = (phi^0, theta.alt)$ is a trading strategy.
+]
+
+3. Describe the trading strategy $phi$ in words.
+
+#attempt[
+  Start with an empty bank account and no open position in the stock.
+
+  At period one, (short) sell one unit of stock and buy one unit of bank account.
+
+  Hold this position until the first time the stock value increases, after which
+  close all positions: sell one unit bank account and buy back one unit of the stock
+  (that is one unit short).
+
+  Then open no new positions until end of the time horizon.
+]
+
+4. Prove that $s^1_0=1$ is a necessary condition for the trading strategy in part (b) to be self-financing.
+
+#attempt[
+  If $s^1_0 != 1$, $Delta C_1 (phi) = phi^0_1 - phi^0_0 + (theta_1 - theta_0) s^1_0 = 1 - s^1_0 != 0$, hence
+  the strategy cannot be self-financing.  $qed$
+]
+
+5. Find the process $dash(phi)^0 = (dash(phi)^0_k)_(k=0,...,T)$ with $dash(phi)^0_0=0$ making the strategy $dash(phi)=
+(dash(phi)^0, theta.alt)$ self-financing, without any additional conditions.
+
+#attempt[
+  $dash(phi)^0_k := s^1_0 - bb(1)_{k > tau} S^1_tau = s^1_0(1 - bb(1)_{tau <= k-1} product_(j=1)^tau Y_j) in cal(F)_(k-1).$
+
+  Since $dash(phi)^0$ is $FF$-predictable and $Delta C(dash(phi)) eq.triple 0$, $dash(phi)$ is a self-financing trading strategy.
 ]
