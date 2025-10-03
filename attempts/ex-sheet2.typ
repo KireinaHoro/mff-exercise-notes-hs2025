@@ -175,6 +175,12 @@ where we use the convention that $inf diameter = +infinity.$
   Hence ${tau <= k+1} = {tau <= k} union {tau = k+1} in cal(F)_(k+1).  quad qed$
 ]
 
+#feedback[
+  - $k=0$: ${tau <= 0} = diameter in cal(F)_0.$  
+  - $k = T$: ${tau <= T} = Omega in cal(F)_T.$
+  - $k = 1, ..., T-1$: ${tau <= k} = {omega in Omega : tau(omega) <= k} = union_(j=1)^k {Y_j > 1} in cal(F)_k.$
+]
+
 2. Prove that $phi = (phi^0, theta.alt)$, where #h(1fr)
   $
   phi^0_0 = 0, quad phi^0_k := bb(1)_{k<=tau} quad "for" k=1, ..., T,\
@@ -184,6 +190,10 @@ where we use the convention that $inf diameter = +infinity.$
 #attempt[
   ${k <= tau} = {tau < k}^c = {tau <= k-1}^c in cal(F)_(k-1).$  Therefore both $phi^0_k$ and $theta.alt_k$ are $cal(F)_(k-1)$-measurable, hence
   $phi^0$ and $theta.alt$ are $FF$-predictable, $phi = (phi^0, theta.alt)$ is a trading strategy.
+]
+
+#feedback[
+  In $phi = (phi^0, theta)$, $phi^0$ only has to be *adapted*.
 ]
 
 3. Describe the trading strategy $phi$ in words.

@@ -17,3 +17,4 @@
 // Notes during exercise sessions
 #include "ex1.typ"
 #include "ex2.typ"
+#include "ex3.typ"

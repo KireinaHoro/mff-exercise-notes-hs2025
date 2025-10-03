@@ -44,8 +44,4 @@ $Delta C_k = 0$.
 
 == Important for conditional expectation
 
-*Monotone convergence theorem.*
-
-*Dominated convergence theorem.*
-
-*Fatou's lemma.*
+Monotone convergence theorem, Dominated convergence theorem, Fatou's lemma.  _These were not given during the session due to lack of time._
