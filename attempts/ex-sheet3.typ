@@ -90,5 +90,33 @@ $ cal(F)_0 := {diameter, Omega}, quad cal(F)_1 := sigma(|Z|), quad cal(F)_k := s
    Prove that $tau_n$ is a stopping time.  Compute the limit $lim_(n->infinity) tau_n$.
 
 #attempt[
-   
+  ${tau_n <= 0} = diameter in cal(F)_0.$
+  
+  Given $1 <= k < infinity$, ${tau_n <= k} = {|Z| > n} in sigma(|Z|) = cal(F)_1 subset.eq cal(F)_k => tau_n$ is a stopping time.  $qed$
+  
+  $lim_{n->infinity} tau_n = lim_(n->infinity) (bb(1)_{|Z| > n} + infinity bb(1)_{|Z| <= n}).$
+  
+  Since for random variables are finite $P$-a.s., $lim_(n->infinity) bb(1)_{|Z|>n} = 0$ and $lim_(n->infinity) bb(1)_{|Z| <= n} = 1.$
+  Hence the limit is $infinity$.
+]
+
+2. Let $X = (X_k)_(k in NN_0)$ be such that $X_0 = X_1 = 0$ and $X_k = Z$ for $k=2,3,...$ Prove that $X$ is a local martingale.
+
+#attempt[
+  $lim_(n->infinity) tau_n = infinity$, hence $tau = (tau_n)_(n in NN_0)$ is a sequence of stopping times increasing to $infinity$ stationarily.
+  
+  Hence to show $X$ is a local martingale, we need to show $X^(tau_n) = (X_(k and tau_n))_(k in NN_0)$ is a martingale.
+  
+  Since $tau_n$ are stopping times, ${tau_n <= k} in cal(F)_k.$
+
+  $E[X_(k and tau_n) | cal(F)_k]
+  &= E[bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} X_(tau_n) | cal(F)_k] \
+  &= bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} E[X_tau_n | cal(F)_k] \
+  &= bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} X_tau_n = X_(k and tau_n).  quad qed$
+]
+
+3. Is $X$ a martingale?
+
+#attempt[
+  No: although the martingale property $E[X_l | cal(F)_k] = X_k$ holds (since $X_j$ is $cal(F)_2$-measurable) holds for $X$, it is not integrable: $E[X_k] = infinity$ for $k=2,...$ Hence $X$ is not a martingale.
 ]
