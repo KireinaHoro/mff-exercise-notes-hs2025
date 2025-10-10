@@ -2,6 +2,7 @@
 #import "exsheet-template.typ": *
 #import "@preview/physica:0.9.5": *
 #import "@preview/ouset:0.2.0": *
+#import "@preview/diagraph:0.3.6": raw-render
 
 #show: exsheet.with(4)
 
@@ -56,4 +57,129 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
   $y_1 > r > y_3 => S$ is NA, thus there exists probability measure $Q$ where $E_Q [G_1(theta.alt)] = 0.$  Since $G_1(theta.alt) >= 0 quad P$-a.s., $G_1(theta.alt) = 0 quad P$-a.s.  $qed$
 ]
 
-#exercise() Consider a financial market 
+#exercise() Consider a financial market $(tilde(S)^0, tilde(S)^1)$ consisting of a bank account and one stock.  The movements of the bank account $tilde(S)^0$ and of the stock $tilde(S)^1$ are described by the trees below, where the numbers next to the branches denote transition probabilities.  Assume $r > -1$ is constant.
+
+#align(center, raw-render(
+  ```dot
+    digraph {
+      rankdir=LR;
+      edge [arrowsize=0.5];
+      node [shape=none, width=0.05, labeldistance=2.5];
+
+      {rank=same;
+      C0[label="tilde(S)^0: 1"];
+      N0[label="tilde(S)^1: 100"];
+      }
+
+      {rank=same;
+      C1[label="1+r"];
+      N11[label="125"];
+      N12[label="120"];
+      N13[label="90"];
+      }
+
+      {rank=same; 
+      C2[label="(1+r)^2"];
+      N21[label="175"];
+      N22[label="100"];
+      N23[label="168"];
+      N24[label="96"];
+      N25[label="126"];
+      N26[label="72"];
+      }
+
+      C0 -> N0 [style=invis];
+
+      C0 -> C1 [label="1", weight=10];
+      C1 -> C2 [label="1", weight=10];
+
+      N0 -> N11 [label="0.2"];
+      N0 -> N12 [label="0.3"];
+      N0 -> N13 [label="0.5"];
+      
+      N11 -> N21 [label="0.5"];
+      N11 -> N22 [label="0.5"];
+
+      N12 -> N23 [label="0.4"];
+      N12 -> N24 [label="0.6"];
+
+      N13 -> N25 [label="0.75"];
+      N13 -> N26 [label="0.25"];
+    }
+  ```,
+  math-mode: "math"
+))
+
+1. Construct for this setup a multiplicative model consisting of a probability space
+   $(Omega, cal(F), P)$ with a filtration $FF=(cal(F)_k)_(k=0,1,2)$ and two random variables $Y_1$ and $Y_2$ such that
+
+   $
+     tilde(S)^1_k = tilde(S)^1_0 product_(j=1)^k Y_j quad "for" k=0,1,2.
+   $
+
+#let uu = "uu"
+#let ud = "ud"
+#let mu = "mu"
+#let md = "md"
+#let du = "du"
+#let dd = "dd"
+
+#attempt[
+  Let $Omega := {uu, ud, mu, md, du, dd}, cal(F) := 2^Omega.$
+
+  Let $FF$ be $cal(F)_0 = {diameter, Omega}, cal(F)_1 = sigma({uu, ud}, {mu, md}, {du, dd}), cal(F)_2 = 2^Omega.$
+
+  Values of $P, Y_1, Y_2$ are given by the table $forall omega in Omega$:
+
+  #table(
+    columns: (auto, auto, auto, auto, auto, auto, auto),
+    table.header(
+      $omega$, [uu], [ud], [mu], [md], [du], [dd]
+    ),
+    $P$, [0.1], [0.1], [0.12], [0.18], [0.375], [0.125],
+    $Y_1$, [1.25], [1.25], [1.2], [1.2], [0.9], [0.9],
+    $Y_2$, [1.4], [0.8], [1.4], [0.8], [1.4], [0.8],
+  )
+]
+
+2. Explicitly describe the set of all equivalent martingale measures for $S^1 := tilde(S)^1 \/ tilde(S)^0$.  For which values of $r$ is the market free of arbitrage?
+
+#attempt[
+  Take a probability measure $Q$ equivalent to $P$ defined by $q(dot.op).$ For $Q$ to be a EMM, $E_Q [S_k | cal(F)_k] = S_(k-1) => E_Q [Y_k | cal(F)_(k-1)] = 1 + r$ must hold for $k=1,2$.
+
+  Take $A_1 = {uu, ud}, A_2 = {mu, md}, A_3 = {du, dd},$ these are the atoms of $cal(F)_1.$
+
+  Let $s_1 := Q[A_1] = q(uu) + q(ud), s_2 = Q[A_2] = q(mu) + q(md), s_3 = Q[A_3] = q(du) + q(dd),$ where $s_1 + s_2 + s_3 = 1.$
+
+  Let $l_1 = Q[uu | A_1] = q(uu) / s_1,
+  l_2 = Q[mu | A_2] = q(mu) / s_2,
+  l_3 = Q[du | A_3] = q(du) / s_3.
+  $
+
+  For $k=1$:
+
+  $E_Q [Y_1 |cal(F)_0] = E_Q [Y_1] = 1.25 (q(uu) + q(ud)) + 1.2 (q(mu) + q(md)) + 0.9 (q(du) + q(dd)) = 1.25 s_1 + 1.2 s_2 + 0.9 s_3 = 1+r => r in (-0.1, 0.25).$
+
+  For $k=2$:
+
+  $E_Q [Y_2 | cal(F)_1](omega)|_(omega in A_1) = 1.4 l_1 + 0.8(1 - l_1) = (1+r) => l_1 = (0.2 +r) / 0.6;$
+
+  $E_Q [Y_2 | cal(F)_1](omega)|_(omega in A_2) = 1.4 l_2 + 0.8(1 - l_2) = (1+r) => l_2 = (0.2 +r) / 0.6;$
+
+  $E_Q [Y_2 | cal(F)_1](omega)|_(omega in A_3) = 1.4 l_3 + 0.8(1 - l_3) = (1+r) => l_3 = (0.2 +r) / 0.6.$
+  
+  Hence let $l = l_1 = l_2 = l_3 = (0.2+r)/0.6 in (0, 1) => r = 0.6 l - 0.2 in (-0.2, 0.4)$.
+
+  All EMMs of $S^1 in QQ$ are defined by:
+
+  $
+    q(uu) &= l dot.op s_1 &= (0.2+r)/0.6 s_1, \
+    q(ud) &= (1-l) s_1 &= (0.8 - r)/0.6 s_1, \
+    q(mu) &= l dot.op s_2 &= (0.2+r)/0.6 s_2, \
+    q(md) &= (1-l) s_2 &= (0.8 - r)/0.6 s_2, \
+    q(du) &= l dot.op s_3 &= (0.2+r)/0.6 s_3, \
+    q(dd) &= (1-l) s_3 &= (0.8 - r)/0.6 s_3, \
+  $
+
+  where $s_1 + s_2 + s_3 = 1 "and" 1.25s_1 + 1.2s_2 + 0.9s_3 = 1+r, s_k in (0,1)$ for $k=1,2,3.$ $QQ$ is a one-parameter family.  For the market to be free of arbitrage i.e.~$QQ != diameter$, there must be $r in (-0.1, 0.25)$.
+]
