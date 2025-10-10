@@ -94,7 +94,7 @@ $ cal(F)_0 := {diameter, Omega}, quad cal(F)_1 := sigma(|Z|), quad cal(F)_k := s
   
   Given $1 <= k < infinity$, ${tau_n <= k} = {|Z| > n} in sigma(|Z|) = cal(F)_1 subset.eq cal(F)_k => tau_n$ is a stopping time.  $qed$
   
-  $lim_{n->infinity} tau_n = lim_(n->infinity) (bb(1)_{|Z| > n} + infinity bb(1)_{|Z| <= n}).$
+  $lim_(n->infinity) tau_n = lim_(n->infinity) (bb(1)_{|Z| > n} + infinity bb(1)_{|Z| <= n}).$
   
   Since for random variables are finite $P$-a.s., $lim_(n->infinity) bb(1)_{|Z|>n} = 0$ and $lim_(n->infinity) bb(1)_{|Z| <= n} = 1.$
   Hence the limit is $infinity$.
@@ -113,6 +113,24 @@ $ cal(F)_0 := {diameter, Omega}, quad cal(F)_1 := sigma(|Z|), quad cal(F)_k := s
   &= E[bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} X_(tau_n) | cal(F)_k] \
   &= bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} E[X_tau_n | cal(F)_k] \
   &= bb(1)_{k < tau_n} X_k + bb(1)_{k >= tau_n} X_tau_n = X_(k and tau_n).  quad qed$
+]
+
+#feedback[
+  *Proved the wrong thing!*  Showed $E[X_(k and tau_n) | text(fill: #red, cal(F)_k)] = X_(k and tau_n)$, not $cal(F)_(k-1).$
+
+  _Correct solution:_ compute $X^(tau_n)$: $X^(tau_n)_0 = X^(tau_n)_1 = 0,$  
+  
+  $ X^(tau_n)_k = X_(k and tau(n)) = cases(
+    0 & "if" tau_n = 1 "i.e." (|Z| > n),
+    Z & "if" tau_n = infinity
+  ) = Z bb(1)_{|Z| <= n} in cal(F)_k = sigma(Z). $
+  
+  We then also need to show integrability: $E[ |X^(tau_n)_k| ] = E[ |Z| bb(1)_{|Z| <= n}] <= n.$
+  
+  We then show $E[X_(k+1)^(tau_n) | cal(F)] = X_k^(tau_n) quad P$-a.s.
+  - $k = 0$: $E[X_1 | cal(F)_0] = 0 = X_0 = X_0^(tau_n).$
+  - $k >= 2$: $E[X^(tau_n)_(k+1) | cal(F)] = E[Z bb(1)_{|Z| <= n} | cal(F)_k] = X_k^tau(n)$.
+  - $k = 1$: $E[Z bb(1)_{|Z| <= n} | sigma(|Z|)] = 0 = X^(tau_n)_1$, use the condition that $Z$ is symmetrical around 0.
 ]
 
 3. Is $X$ a martingale?
