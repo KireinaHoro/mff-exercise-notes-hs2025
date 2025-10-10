@@ -145,7 +145,7 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
 2. Explicitly describe the set of all equivalent martingale measures for $S^1 := tilde(S)^1 \/ tilde(S)^0$.  For which values of $r$ is the market free of arbitrage?
 
 #attempt[
-  Take a probability measure $Q$ equivalent to $P$ defined by $q(dot.op).$ For $Q$ to be a EMM, $E_Q [S_k | cal(F)_k] = S_(k-1) => E_Q [Y_k | cal(F)_(k-1)] = 1 + r$ must hold for $k=1,2$.
+  Take a probability measure $Q approx P$ defined by $q : Omega -> [0,1].$ For $Q$ to be a EMM, $E_Q [S_k | cal(F)_k] = S_(k-1) => E_Q [Y_k | cal(F)_(k-1)] = 1 + r$ must hold for $k=1,2$.
 
   Take $A_1 = {uu, ud}, A_2 = {mu, md}, A_3 = {du, dd},$ these are the atoms of $cal(F)_1.$
 
@@ -170,7 +170,7 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
   
   Hence let $l = l_1 = l_2 = l_3 = (0.2+r)/0.6 in (0, 1) => r = 0.6 l - 0.2 in (-0.2, 0.4)$.
 
-  All EMMs of $S^1 in QQ$ are defined by:
+  Therefore, all EMMs of $S^1 quad Q in QQ$ are defined by:
 
   $
     q(uu) &= l dot.op s_1 &= (0.2+r)/0.6 s_1, \
