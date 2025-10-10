@@ -17,6 +17,10 @@
   Therefore $f(X)$ is a submartingale.  $qed$
 ]
 
+#feedback[
+  Also has to argue why $f(X_k)$ is adapted and $in L^1$ (integrable)!
+]
+
 #let cdot = $circle.filled.small$
 
 2. Let $X$ be a submartingale and $theta.alt = (theta.alt_k)_(k in NN_0)$ a bounded, nonnegative and predictable process.
@@ -39,6 +43,10 @@
     Therefore $E[theta.alt cdot X_l | cal(F)_k] >= theta.alt cdot X_k. quad qed$
 ]
 
+#feedback[
+  Same as above, also has to argue why $f(X_k)$ is adapted and $in L^1$ (integrable)!
+]
+
 3. Let $X$ be a submartingale and $tau$ a stopping time.  Show that the stopped process $X^tau = (X^tau_k)_(k in NN_0)$, defined by $X^tau_k = X_(k and tau)$, is a submartingale.
 
 #attempt[
@@ -49,8 +57,6 @@
 
     Since ${r >= j}$ and $Delta X_j$ are both $cal(F)_j$-measurable, $E[bb(1)_{tau >= j} Delta X_j | cal(F)_j] >= 0 quad P$-a.s., hence each  $E[dot.op | cal(F)_k]$ in the sum $>= 0$, hence $E[X_(l and tau) | cal(F)_k] >= X_(k and tau)$ for $l >= k. quad qed$
 ]
-
-#pagebreak()
 
 #exercise() Consider a probability space $(Omega, cal(F), P)$ with a filtration $FF = (cal(F)_k)_(k=0,...,T),$ where $cal(F)_0 := {diameter, Omega}$.  Let $X = (X_k)_(k=0,...,T)$ be a supermartingale.  Show that
 
@@ -137,4 +143,10 @@ $ cal(F)_0 := {diameter, Omega}, quad cal(F)_1 := sigma(|Z|), quad cal(F)_k := s
 
 #attempt[
   No: although the martingale property $E[X_l | cal(F)_k] = X_k$ holds (since $X_j$ is $cal(F)_2$-measurable) holds for $X$, it is not integrable: $E[X_k] = infinity$ for $k=2,...$ Hence $X$ is not a martingale.
+]
+
+#feedback[
+  Solution is correct, but $E[X_l | cal(F)_k]$ is not definable since it's not integrable; hence no way of saying
+  if the "martingale property" holds or not.  This reflects the importance of arguing that the process has to be 
+  integrable (i.e.~$in L^1$).
 ]
