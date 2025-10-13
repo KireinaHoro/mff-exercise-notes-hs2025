@@ -306,3 +306,6 @@
   
   body_page(title, body)
 }
+
+// Commonly used symbols
+#let naeq = $eq.est$

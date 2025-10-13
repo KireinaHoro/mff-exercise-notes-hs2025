@@ -1,4 +1,4 @@
-#import "../template.typ": attempt, feedback
+#import "../template.typ": *
 #import "exsheet-template.typ": *
 #import "@preview/physica:0.9.5": *
 #import "@preview/ouset:0.2.0": *
@@ -42,7 +42,7 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
 1. Suppose that $r <= y_3$.  Show that in this case, the market $(tilde(S)^0, tilde(S)^1)$ admits arbitrage, by explicitly constructing an arbitrage opportunity.
 
 #attempt[
-  Take the self-financing strategy $phi hat(=) (0, theta.alt)$ where $theta.alt = cases(0 "if" k != 1, 1 "if" k = 1)$.
+  Take the self-financing strategy $phi naeq (0, theta.alt)$ where $theta.alt = cases(0 "if" k != 1, 1 "if" k = 1)$.
 
   $ V_0(phi) = 0 < V_k (phi) = V_1(phi) = cases(
     y_1 - r "with probability" p_1,
@@ -51,7 +51,7 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
   ) quad forall k = 1,...,T. $
 ]
 
-2. Suppose that $y_1 > y_2 = r > y_3$ and consider an arbitrary self-financing strategy $phi hat(=) (V_0, theta.alt)$.  Show that if the total gain $G_1 (theta.alt)$ at time $T=1$ is nonnegative $P$-a.s., then $G_1 (theta.alt) = 0 quad P$-a.s.
+2. Suppose that $y_1 > y_2 = r > y_3$ and consider an arbitrary self-financing strategy $phi naeq (V_0, theta.alt)$.  Show that if the total gain $G_1 (theta.alt)$ at time $T=1$ is nonnegative $P$-a.s., then $G_1 (theta.alt) = 0 quad P$-a.s.
 
 #attempt[
   $y_1 > r > y_3 => S$ is NA, thus there exists probability measure $Q$ where $E_Q [G_1(theta.alt)] = 0.$  Since $G_1(theta.alt) >= 0 quad P$-a.s., $G_1(theta.alt) = 0 quad P$-a.s.  $qed$
