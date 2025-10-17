@@ -142,6 +142,12 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
   )
 ]
 
+#feedback[
+  $omega in Omega$ has two components since it's a two period model.  Let $Omega := {"u", "m", "d"} crossproduct { "u", "d" }.$
+  
+  Here the $sigma$-algebra can be the power set, but if leaf nodes are merged, we can't tell some paths apart and then $cal(F) subset 2^Omega.$
+]
+
 2. Explicitly describe the set of all equivalent martingale measures for $S^1 := tilde(S)^1 \/ tilde(S)^0$.  For which values of $r$ is the market free of arbitrage?
 
 #attempt[
@@ -182,4 +188,14 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
   $
 
   where $s_1 + s_2 + s_3 = 1 "and" 1.25s_1 + 1.2s_2 + 0.9s_3 = 1+r, s_k in (0,1)$ for $k=1,2,3.$ $QQ$ is a one-parameter family.  For the market to be free of arbitrage i.e.~$QQ != diameter$, there must be $r in (-0.1, 0.25)$.
+]
+
+#feedback[
+  $Q[(omega_1, omega_2)] = q_(omega_1) q_(omega_2 | omega_1)$.
+  
+  Need to write down *adapted and integrable*, even if they are _trivial!_  Integrable follows that $Omega$ is finite.
+  
+  $s_1,s_2,s_3 in (0,1)$ is important since it must hold that $Q approx P$.
+  
+  Need to actually pick one parameter and solve $s_1, s_2, s_3$!
 ]
