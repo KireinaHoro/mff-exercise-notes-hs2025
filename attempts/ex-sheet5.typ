@@ -52,8 +52,82 @@ $
 1. Show that $1/Z$ is a positive $Q$-martingale with $E_Q [1/Z_0] = 1$.
 
 #attempt[
-  By definition, $Z_k = E_P [dd(Q)/dd(P) | cal(F)_k]$ is a strictly positive $P$-martingale, i.e.~$E_P [Z_k | cal(F)_(k-1)] = Z_(k-1)$.  Hence
+  $1/Z$ is obviously $Q$-adapted, integrable, and positive.
+
+  Apply the Bayes formula, $E_Q [1/Z_k | cal(F)_(k-1)] = 1/Z_(k-1) E_P [Z_k dot.op 1/Z_k | cal(F)_(k-1)] = 1/Z_(k-1)$ satisfies the martingale property, hence $1/Z$ is a $Q$-martingale.
+
+  $E_Q [1/Z_0] = E_P [cal(D) dot.op 1/Z_0] = E_P [cal(D) dot.op 1 \/ E_P [cal(D) | cal(F)_0]] = 1. quad qed$
+]
+
+2. Show that for every $k=0,1,...T$ and every $A in cal(F)_k$, we have that
+
+$
+  P[A] = E_Q [1/Z_k bb(1)_A].
+$
+
+#attempt[
+  $E_Q [1/Z_k bb(1)_A] = E_P [cal(D) dot.op 1 \/ E_P [cal(D) | cal(F)_k] dot.op bb(1)_A] = E_P [bb(1)_A] = P[A].  quad qed$
+]
+
+#exercise() Let $(Omega, cal(F), P)$ be a probability space and $Y tilde cal(N)(0,1)$ a standard normal variable.  Fix a constant $beta in RR$.
+
+1. Consider the random variable
+
   $
-    
+    Z := exp(-(1/2 - beta) Y - (1/2 - beta)^2 / 2).
+  $
+
+  Define the map $Q : cal(F) -> RR$ by $Q[A] := E[Z bb(1)_A]$.  Prove that $Q$ is a probability measure on $(Omega, cal(F))$ and that it is equivalent to $P$.
+
+#attempt[
+  Per definition, $Z > 0$.  Since $Y tilde cal(N)(0, 1)$, the PDF of $Y$ $p_Y (x) = 1/sqrt(2pi) exp (-x^2 / 2).$
+  
+  To prove $Q$ is a probability:
+  - Nonngeative: $Q[A] = E[Z bb(1)_A] >= 0$.
+  - Null empty set: $Q[diameter] = E[Z bb(1)_diameter]= 0$.
+  - Countable additivity: $Q[union_(n in NN) A_n] = E[Z sum_(n in NN) bb(1)_(A_n)] = sum_(n in NN) E[Z bb(1)_(A_n)] = sum_(n in NN) Q[A_n]$ per the monotone convergence theorem.
+  - Total mass 1: 
+  $
+    Q[Omega] = E[Z] &= integral_Omega Z(omega) dd(P(omega)) \
+    &= integral_RR exp(-(1/2 - beta) x - (1/2 - beta)^2 / 2) 1/sqrt(2pi) exp(-x^2/2) dd(x) \
+    &= integral_RR 1/sqrt(2pi) exp(-1/2 (x + 1/2 - beta)^2) dd(x) = 1.
+  $
+
+  To prove $Q approx P$:
+  - $forall A$ where $P[A]=0$, $Q[A] = E[Z bb(1)_A] = 0$;
+  - $forall A$ where $Q[A]=E[Z bb(1)_A] = 0$, since $Z > 0$, $bb(1)_A$ must be $diameter$, hence $P[A] = 0$. $qed$
+]
+
+2. Set 
+  $
+    S^1_0 := e^beta quad "and" quad S^1_1 := e^Y.
+  $
+
+  Prove that $S^1 = (S^1_0, S^1_1)$ is a $(Q, FF)$-martingale, where $FF = (cal(F)_0, cal(F)_1)$ is the filtration given by $cal(F)_0 := {diameter, Omega}$ and $cal(F)_1 := cal(F)$.
+
+#attempt[
+  $S^1$ is obviously $FF$-adapted and integrable.
+
+  $
+    E_Q [S^1_1 | cal(F)_0] = E_Q [S^1_1] &= E[Z e^Y] \
+    &= E[exp(-(1/2-beta) Y - (1/2-beta)^2 / 2 + Y)] \
+    &= E[exp(beta) exp((beta + 1/2) Y - (1/2 - beta)^2 / 2 - beta)] \
+    &= e^beta integral_RR 1/sqrt(2pi) exp(-x^2/2) exp((beta + 1/2) x - (1/2 - beta)^2 / 2 - beta) dd(x) \
+    &= e^beta integral_RR 1/sqrt(2pi) exp(-x^2/2 + (beta + 1/2)x - (1/2 + beta)^2 / 2) dd(x) \
+    &= e^beta integral_RR 1/sqrt(2pi) exp(-1/2 (x - 1/2 - beta)^2) dd(x) = e^beta. quad qed 
+  $
+]
+
+3. Show that $log S^1_1$ has under $Q$ a normal distribution with mean $beta - 1/2$ and variance 1.
+
+#attempt[
+  Compute the PDF of $Y$ given the probability measure $Q$:
+
+  $
+    q_Y (x) = "d"/dd(x) Q[Y <= x] &= "d"/dd(x) E_P [Z bb(1)_{Y <= x}] \
+    &= "d"/dd(x) integral_Omega Z(omega) bb(1)_{Y(omega) <= x} dd(P(omega)) \
+    &= "d"/dd(x) integral_(-infinity)^x exp(-(1/2-beta) y - (1/2-beta)^2 / 2) 1/sqrt(2pi) exp(-y^2/2) dd(y) \
+    &= "d"/dd(x) integral_(-infinity)^x exp(-1/2 (y-(beta-1/2))^2) dd(y) \
+    &= exp(-1/2(x - (beta - 1/2))^2) tilde cal(N)(beta - 1/2, 1). quad qed
   $
 ]
