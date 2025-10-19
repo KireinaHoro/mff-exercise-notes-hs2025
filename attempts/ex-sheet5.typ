@@ -52,5 +52,8 @@ $
 1. Show that $1/Z$ is a positive $Q$-martingale with $E_Q [1/Z_0] = 1$.
 
 #attempt[
-  
+  By definition, $Z_k = E_P [dd(Q)/dd(P) | cal(F)_k]$ is a strictly positive $P$-martingale, i.e.~$E_P [Z_k | cal(F)_(k-1)] = Z_(k-1)$.  Hence
+  $
+    
+  $
 ]
