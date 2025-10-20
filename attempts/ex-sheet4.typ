@@ -14,6 +14,10 @@
   2. For each $k=0,...,T-1$, the one-period market $(S_k, S_(k+1))$ on the probability space $(Omega, cal(F)_(k+1), P)$ with the filtration $(cal(F)_k, cal(F)_(k+1))$ satisfies NA.
 ]
 
+#feedback[
+  Needs more explanation!  Refer to standard solution
+]
+
 #attempt[
   $S$ satisfies NA $<=> exists "probability measure" Q approx P$ such that $S$ is a $Q$-martingale $<=> exists Q "s.t." E_Q [S_(k+1) | cal(F)_k] = S_(k+1) quad forall k=0,...,T-1.$  This coincides with the martingale property
   for the one-period process $tilde(S)^k = (S_k, S_(k+1))$ to be a $((cal(F)_k, cal(F)_(k+1)), Q)$-martingale, which is equivalent to (ii).  $qed$
@@ -49,6 +53,10 @@ with $p_1 + p_2 + p_3 = 1$ and $y_1 > y_2 > y_3 > -1$.  We also have $r>-1$.  We
     y_2 - r "with probability" p_2,
     y_3 - r "with probability" p_3,
   ) quad forall k = 1,...,T. $
+]
+
+#feedback[
+  Mistake: #text(fill: red)[$y_3 >= r$] not $y_3 > r$, so in the attempt only $V_k(phi) >= 0$ is shown.  Need to show in addition $P[V_k(phi) > 0] > 0$.
 ]
 
 2. Suppose that $y_1 > y_2 = r > y_3$ and consider an arbitrary self-financing strategy $phi naeq (V_0, theta.alt)$.  Show that if the total gain $G_1 (theta.alt)$ at time $T=1$ is nonnegative $P$-a.s., then $G_1 (theta.alt) = 0 quad P$-a.s.
