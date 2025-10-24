@@ -31,6 +31,8 @@ $
 
 #feedback[
   If forgot how the decomposition is, just take $Delta X_n = Delta M_n + Delta A_n$ and then take $E[dot.op | cal(F)_(n-1)]$.
+
+  Integrability of $X$ and thus $M$ needs to be shown!
 ]
 
 2. Prove that $M$ and $A$ are $P$-a.s.~unique.
@@ -142,4 +144,8 @@ $
     &= "d"/dd(x) integral_(-infinity)^x exp(-1/2 (y-(beta-1/2))^2) dd(y) \
     &= exp(-1/2(x - (beta - 1/2))^2) tilde cal(N)(beta - 1/2, 1). quad qed
   $
+]
+
+#feedback[
+  The $~$ notation can only be used with random variables, so must write $Y ~ cal(N)(0,1)$ under $Q$.
 ]
