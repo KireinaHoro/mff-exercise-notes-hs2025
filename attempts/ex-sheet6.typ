@@ -84,7 +84,7 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
     )
   $
   
-  Hence $PP_e (S^1) = { ((2q+1)/3, (2-5q)/3, q) | q in (0,2/5)}$.
+  Hence $PP_e (S^1) = { ((2q+1)/3, (2-5q)/3, q) : q in (0,2/5)}$.
 ]
 
 2. Show that the set $PP_e (S^1)$ is convex.
@@ -113,7 +113,8 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
     ((tilde(S)^1_1 - 11)^+)/(1+r) = cases(
       2/1.1 &quad "up state",
       0 &quad "otherwise"
-    ) => E_Q [dot.op] = (2(2q+1))/(1.1 dot.op 3) = (4q+2)/3.3 "where" q in (0, 2/5). \
+    ) \
+    => E_Q [dot.op] = 2/1.1 dot.op (2q+1)/3 + 0 dot.op (dot.op)= (4q+2)/3.3 "where" q in (0, 2/5). \
     sup E_Q [dot.op] = sup (4q+2)/3.3 |_(q in (0,2/5)) = 12/11. \
     hat(Q) = ((2q'+1)/3, (2-5q')/3, q')|_(q'=2/5) = (0.6, 0, 0.4).
   $
@@ -124,7 +125,17 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
 4. Show that $PP_e (S^1) = PP_(e,"loc")(S^1)$, where $PP_(e,"loc")(S^1)$ is the set of all equivalent local martingale measures for $S^1$.
 
 #attempt[
-  Use the DMW theorem: since $PP_e (S^1) != diameter$, $PP_e (S^1) = PP_(e,"loc")(S^1). quad qed$
+  We need to prove that $PP_(e,"loc")(S^1) subset.eq PP_e (S^1).$ 
+  
+  Given $Q in PP_(e,"loc") (S^1)$, $S^1$ is a $Q$-local martingale $=> exists (tau_n)_(n in )$ the localising sequence, and $(S^1)^(tau_n) = (S^1_(k and tau_n))_(k=0,1)$ is a $Q$-martingale.
+  
+  Hence, $E_Q [S^1_(1 and tau_n) | cal(F)_0] = S^1_(0 and tau_n) = S^1_0$.  Per definition of $S^1$, $|S^1| <= 10 (1+u)$ is bounded.  Take the limit of the LHS and apply the dominated convergence theorem:
+
+  $
+    lim_(n -> infinity) E_Q [S^1_(1 and tau_n) | cal(F)_0] = E_Q [lim_(n -> infinity) S^1_(1 and tau_n) | cal(F)_0] = E_Q [S^1_1 | cal(F)_0] = lim_(n->infinity) S^1_0 = S^1_0.
+  $
+  
+  Hence $S^1$ is also a $Q$-martingale, i.e.~$Q in PP_e (S^1). => PP_(e,"loc") (S^1) subset.eq PP_e (S^1). quad qed$
 ]
 
 #exercise() Let $(Omega, cal(F), FF, P, tilde(S)^0, tilde(S)^1)$ be a single-period trinomial model on the canonical path space.  Assume that $u > m = r > d > -1$ and $tilde(S)^1_0 = s_0 > 0$.
@@ -136,7 +147,7 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
   is attainable.  Construct a replicating strategy when it is.
   
 #attempt[
-  Take $phi hat(=) (0, theta.alt)$ where the first period is $(phi_1, theta.alt_1)$.  The value of the replicating strategy
+  Take a replicating strategy $phi$ (that is self-financing) where the first period is $(phi_1, theta.alt_1)$.  The value of the replicating strategy
   $
     tilde(V)^tilde(H)_1 = cases(
       (1+r) phi_1 + (1+u) s_0 theta.alt_1 & quad "up case",
@@ -192,5 +203,5 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
   $
   Hence the arbitrage-free prie range is $[0, (r-d)/(u-d)]$.  This is not a single point, hence $tilde(H)$ is not attainable.
   
-  _Question to the TA: is this enough to show that $tilde(H)$ is not attainable?  Or do we have to construct $phi hat(=) (0, theta.alt)$ and find a contradiction, same as in (a)?_
+  _Question to the TA: is this enough to show that $tilde(H)$ is not attainable?  Or do we have to construct $phi$ and find a contradiction, same as in (a)?_
 ]
