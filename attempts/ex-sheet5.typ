@@ -29,6 +29,10 @@ $
   holds.  $qed$
 ]
 
+#feedback[
+  If forgot how the decomposition is, just take $Delta X_n = Delta M_n + Delta A_n$ and then take $E[dot.op | cal(F)_(n-1)]$.
+]
+
 2. Prove that $M$ and $A$ are $P$-a.s.~unique.
 
 #attempt[
@@ -42,9 +46,13 @@ $
 #attempt[
   Since $Delta X_n$ are i.i.d.~$forall n in NN_+$, $E[Delta X_n | cal(F)_(n-1)] = E[Delta X_n]$ is a constant $c$.
 
-  $A_n = sum_(k=1)^n E[X_k - X_(k-1) | cal(F)_k-1] = sum_(k=1)^n E[ Delta X_k | cal(F)_(k-1) ] = n dot.op c. \
+  $A_n = sum_(k=1)^n E[X_k - X_(k-1) | cal(F)_(k-1)] = sum_(k=1)^n E[ Delta X_k | cal(F)_(k-1) ] = n dot.op c. \
   M_n = X_n - n dot.op c.
   $
+]
+
+#feedback[
+  *Don't forget about $X_0$!* $M_n = X_n - X_0 - n dot.op c$.
 ]
 
 #exercise() Let $(Omega, cal(F), P)$ be a probability space with filtration $FF = (cal(F)_k)_(k=0,1,...,T)$.  Let $Q$ be a probability measure on $(Omega, cal(F))$ such that $Q approx P$, and let $Z = (Z_k)_(k=0,1,...,T)$ be the density process of $Q$ with respect to $P$.
@@ -96,6 +104,10 @@ $
   To prove $Q approx P$:
   - $forall A$ where $P[A]=0$, $Q[A] = E[Z bb(1)_A] = 0$;
   - $forall A$ where $Q[A]=E[Z bb(1)_A] = 0$, since $Z > 0$, $bb(1)_A$ must be $diameter$, hence $P[A] = 0$. $qed$
+]
+
+#feedback[
+  Important to apply the monotone convergence theorem!  Take the partial sums and apply the limit.
 ]
 
 2. Set 
