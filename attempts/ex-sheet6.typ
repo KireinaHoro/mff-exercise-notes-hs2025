@@ -100,6 +100,13 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
   Obviously $q' in (0,2/5)$, hence LHS $in PP_e (S^1)$.  $qed$
 ]
 
+#feedback[
+  $PP_e (S^1)$ is convex $=>$ given $Q^1, Q^2 in PP_e (S^1) -> lambda Q^1 + (1-lambda) Q^2 in PP_e (S^1)$ for $lambda in [0,1]$.  Three things to show:
+  - probability measure,
+  - equivalent to $P$,
+  - $S^1$ is a $Q^lambda$-martingale.
+]
+
 3. Show that #h(1fr)
 
   $
@@ -181,6 +188,10 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
     Subtract the first and second equations: $theta.alt_1 = 1$.  Substitute this into the first and third equations: $phi_1 = (-(1+d)s_0)/(1+r) = -K/(1+r)$, contradition!
     
   Hence for $tilde(H)$ to be attainable, $K$ must be $>= (1+u)s_0$ or $<= (1+d)s_0$.
+]
+
+#feedback[
+  Be explicit with the notations!  Calculate $V_0$ in $phi hat(=)(V_0, theta.alt)$ explicitly instead of going with $phi^0_1$.  Use the formula $V = V_0 + Delta S_1 theta.alt_1 + ...$
 ]
 
 2. Compute the set of all arbitrage-free prices for the (undiscounted) payoff #h(1fr)
