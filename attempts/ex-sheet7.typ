@@ -66,8 +66,85 @@ with $0 < p < 1$.  We assume $u := 0.21, d := -0.01$ and $r := 0.1$.  It follows
     H := |S^1_2 - S^1_0|.
   $
   
-  Is it attainable?  If so, compute a replicating strategy $phi hat(=) (V_0, (theta^1_1, theta^1_2)).$
+  Is it attainable?  If so, compute a replicating strategy $phi hat(=) (V_0, (tha^1_1, tha^1_2)).$
   
 #attempt[
+  For $H$ to be attainable, we need to find a $phi hat(=) (V_0, (tha^1_1, tha^1_2)) =: (V_0, (tha_1, (theta_(2|u), theta_(2|d))))$ such that
+
+  $
+    cases(
+      V_0 + 10 tha_1 + 11 tha_(2|u) &= 21,
+      V_0 + 10 tha_1 - 11 tha_(2|u) &= 0,
+      V_0 - 10 tha_1 + 9  tha_(2|d) &= 0,
+      V_0 - 10 tha_1 - 9  tha_(2|d) &= 0,
+    ) => cases(
+      V_0 &= 21/4,
+      tha_1 &= 21/40,
+      tha_(2|u) &= 21/22,
+      tha_(2|d) &= 0,
+    )
+  $
   
+  Since the replication strategy exists, $H$ is attainable.
+]
+
+#exercise() Let $W = (W_t)_(t>=0)$ and $W' = (W'_t)_(t>=0)$ be two independent Brownian motions defined on some probability space $(Omega, cal(F), P)$.  Show that
+
+1. $W^1 := -W$ is a BM.
+
+#attempt[
+  Three properties of a BM:
+  - $W^1_0 = -W_0 = 0$ is trivial.
+  - $W^1$ is a.s. continuous is trivial.
+  - $forall s > t > 0, W^1_s - W^1_t ~ N(0, s-t)$ and are i.i.d.:
+    $W_s^1 - W_t^1 = -W_s + W_t = - (W_s - W_t) ~ N(0, s-t)$ and are i.i.d.  $qed$
+]
+
+2. $W^2_t := W_(T+t) - W_T, "for" t >= 0$, is a BM for any $T>0$.
+
+#attempt[
+  Three properties of a BM:
+  - $W^2_0 = W_T - W_T = 0$ is trivial.
+  - $W^2$ is a.s. continuous is trivial.
+  - $forall s > t > 0, W^2_s - W^2_t ~ N(0, s-t)$ and are i.i.d.:
+    $W_s^2 - W_t^2 = W_(T+s) - W_T - (W_(T+t) - W_T) = W_(T+s) - W_(T+t) ~ N(0, s-t)$ and are i.i.d.  $qed$
+]
+
+3. $W^3 := alpha W + sqrt(1-alpha^2) W'$ is a BM for any $alpha in [0,1]$.
+
+#attempt[
+  Three properties of a BM:
+  - $W^3_0 = alpha W_0 + sqrt(1-alpha^2) W'_0 = 0$ is trivial.
+  - $W^3$ is a.s. continuous is trivial.
+  - $forall s > t > 0, W^3_s - W^3_t ~ N(0, s-t)$ and are i.i.d.:
+    $W_s^3 - W_t^3 = alpha (W_s - W_t) + sqrt(1-alpha^2) (W'_s - W'_t).$ Since $W$ and $W'$ are independent, $W_s - W_t ~ N(0, s-t)$ and $W'_s - W'_t ~N(0, s-t)$ and are i.i.d.
+    Hence, $W^3_s - W^3_t ~ N(0, (alpha^2 + (1-alpha^2)) (s-t)) = N(0, s-t).  quad qed$
+]
+
+4. Show that the independence of $W$ and $W'$ in (c) cannot be omitted, i.e., if $W$ and $W'$ are not independent, then $W^3$ need not be a BM.  Give a counterexample.
+
+#attempt[
+  Take $W' := -W, alpha = 1/sqrt(2)$.  $W^3 = 1/sqrt(2) W + 1/sqrt(2) W' equiv 0$ is not a BM, since $forall s>t>0, W^3_s-W^3_t equiv 0$ is not a normal deviate.
+]
+
+#exercise() Let $W = (W_t)_(t>=0)$ be a Brownian motion defined on some probability space $(Omega, cal(F), P)$.
+
+1. Let $s <= t$.  Compute $E[W_s W_t^2]$.
+
+#attempt[
+  $E[W_s W_t^2] &= E[W_s (W_t - W_s + W_s)^2] \
+  &= E[W_s (W_t-W_s)^2] + 2 E[W_s^2 (W_t-W_s)] + E[W_s^3] \
+  &= 0.$
+]
+
+2. Let $a in RR$.  Compute $lim_(t -> infinity) E[bb(1)_{W_t <= a}]$.
+
+#attempt[
+  $
+  lim_(t->infinity) E[bb(1)_{W_t <= a}] &= lim_(t->infinity) integral_Omega bb(1)_{W_t <= a} (omega) dd(P(omega)) \
+  &= lim_(t->infinity) integral_(-infinity)^a 1 p_W_t (x) dd(x) \
+  &= lim_(t->infinity) integral_(-infinity)^a 1/sqrt(2 pi t) exp(-x^2/(2t)) dd(x) \
+  &= integral_(-infinity)^a (lim_(t->infinity) 1/sqrt(2pi t) exp(-x^2/(2t))) dd(x)  quad quad & "(M.C.T.)"\
+  &= 0.
+  $
 ]

@@ -309,3 +309,4 @@
 
 // Commonly used symbols
 #let naeq = $eq.est$
+#let tha = $theta.alt$
