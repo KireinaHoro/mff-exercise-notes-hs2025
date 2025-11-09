@@ -88,6 +88,24 @@ with $0 < p < 1$.  We assume $u := 0.21, d := -0.01$ and $r := 0.1$.  It follows
   Since the replication strategy exists, $H$ is attainable.
 ]
 
+#feedback[
+  $H$ is #text(fill: red)[*not*] a call option!  It's the absolute value instead of a $max(dot, 0)$.
+  
+  $
+    cases(
+      V_0 + 10 tha_1 + 11 tha_(2|u) &= 21,
+      V_0 + 10 tha_1 - 11 tha_(2|u) &= 1,
+      V_0 - 10 tha_1 + 9  tha_(2|d) &= 1,
+      V_0 - 10 tha_1 - 9  tha_(2|d) &= 19,
+    ) => cases(
+      V_0 &= 21/2,
+      tha_1 &= 1/20,
+      tha_(2|u) &= 10/11,
+      tha_(2|d) &= -1,
+    )
+  $
+]
+
 #exercise() Let $W = (W_t)_(t>=0)$ and $W' = (W'_t)_(t>=0)$ be two independent Brownian motions defined on some probability space $(Omega, cal(F), P)$.  Show that
 
 1. $W^1 := -W$ is a BM.
