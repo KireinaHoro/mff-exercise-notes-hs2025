@@ -4,7 +4,7 @@
 #import "@preview/ouset:0.2.0": *
 #import "@preview/diagraph:0.3.6": raw-render
 
-#show: exsheet.with(6)
+#show: exsheet.with(7)
 
 #exercise() Let $(Omega, cal(F), FF, P, tilde(S)^0, tilde(S)^1)$ be a 2-period binomial model on the canonical path space.  Specifically, $Omega := {1, 2}^2, cal(F):=2^Omega, FF=(cal(F)_0, cal(F)_1,cal(F)_2)$ with $cal(F)_0 := {diameter, Omega}, cal(F)_1 := sigma(tilde(S)^1_1)$ and $cal(F)_2 := cal(F)$.  We have
 
