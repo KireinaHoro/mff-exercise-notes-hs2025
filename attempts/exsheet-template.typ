@@ -7,7 +7,7 @@
 
 #let exsheet(number, body) = {
   set document(title: [Exercise Sheet Submission #number], author: "Pengcheng Xu")
-  set enum(numbering: "(a)")
+  set enum(numbering: "(a)(i)")
   set heading(numbering: none)
   set page(
     header: [
