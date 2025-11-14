@@ -107,7 +107,7 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
   - $S^1$ is a $Q^lambda$-martingale.
 ]
 
-3. Show that #h(1fr)
+3. Show that
 
   $
     sup_(Q in PP_e (S^1)) E_Q [(tilde(S)^1_1 - 11)^+/(1+r)] = E_hat(Q) [(tilde(S)^1_1 - 11)^+/(1+r)]
@@ -147,7 +147,7 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
 
 #exercise() Let $(Omega, cal(F), FF, P, tilde(S)^0, tilde(S)^1)$ be a single-period trinomial model on the canonical path space.  Assume that $u > m = r > d > -1$ and $tilde(S)^1_0 = s_0 > 0$.
 
-1. Determine for which $K>=0$ the (undiscounted) payoff #h(1fr)
+1. Determine for which $K>=0$ the (undiscounted) payoff
   $
     tilde(H) := (tilde(S)^1_1 - K)^+
   $
@@ -194,7 +194,7 @@ with $p_1,p_2,p_3 > 0$ and $p_1 + p_2 + p_3 = 1$.  We assume $d=-0.2,m=0.1=r$ an
   Be explicit with the notations!  Calculate $V_0$ in $phi hat(=)(V_0, theta.alt)$ explicitly instead of going with $phi^0_1$.  Use the formula $V = V_0 + Delta S_1 theta.alt_1 + ...$
 ]
 
-2. Compute the set of all arbitrage-free prices for the (undiscounted) payoff #h(1fr)
+2. Compute the set of all arbitrage-free prices for the (undiscounted) payoff
   $
     tilde(H) := bb(1)_{tilde(S)^1_1 > s_0(1+r)}.
   $

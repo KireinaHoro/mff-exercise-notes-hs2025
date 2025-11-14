@@ -8,7 +8,7 @@
 
 #exercise() Let $W = (W_t)_(t>=0)$ be a Brownian motion defined on some probability space $(Omega, cal(F), P)$ with a filtration $FF := (cal(F)_t)_(t>=0)$ satisfying the usual conditions.
 
-1. Introduce the adapted process $(Z_t)_(t>=0)$ defined by #h(1fr)
+1. Introduce the adapted process $(Z_t)_(t>=0)$ defined by
   $
     Z_t := W_t - integral_0^t W_u/u dd(u).
   $
@@ -33,7 +33,7 @@
   Hence $Z_t$ is not a BM in $FF. quad qed$
 ]
 
-2. Let $t >= 0$.  Prove, without explicitly computing the values, that #h(1fr)
+2. Let $t >= 0$.  Prove, without explicitly computing the values, that
   $
     E[sup_(s in [0,t]) W_s] = sqrt(t) E[sup_(s in [0,1]) W_s].
   $
@@ -87,7 +87,7 @@ $
   _Note to TA: can we directly invoke the moment-generating function?  Or do we have to calculate $E[sigma(W_t-W_u)]$ as an integral?_
 ]
 
-3. Suppose that $S$ is a martingale.  Show that #h(1fr)
+3. Suppose that $S$ is a martingale.  Show that
   $
     lim_(t->infinity) E[S_t] != E[lim_(t->infinity) S_t].
   $

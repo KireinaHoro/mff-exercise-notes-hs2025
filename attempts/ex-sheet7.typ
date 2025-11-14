@@ -61,7 +61,7 @@ with $0 < p < 1$.  We assume $u := 0.21, d := -0.01$ and $r := 0.1$.  It follows
   The market is arbitrage-free and also complete since $d < r < u$.  
 ]
 
-2. Let $H$ be the discounted payoff given by #h(1fr)
+2. Let $H$ be the discounted payoff given by
   $
     H := |S^1_2 - S^1_0|.
   $

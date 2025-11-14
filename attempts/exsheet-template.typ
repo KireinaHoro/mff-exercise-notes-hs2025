@@ -20,6 +20,10 @@
       #counter(page).display("1/1", both: true)
     ]
   )
+  show math.equation.where(block: true) :it=>block(
+  width: 100%,
+  align(center, it)
+  )
   
   let counter = counter("Exercise")
   counter.update((number, 1))

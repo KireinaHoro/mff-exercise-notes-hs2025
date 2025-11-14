@@ -136,7 +136,7 @@ $ cal(F)_tau := {A in cal(F): A inter {tau <= k} in cal(F)_k "for all" k=0,1,2,.
   Hence $A_sigma inter {tau <= k} = A_sigma inter {tau <= k} inter {sigma <= k} in cal(F)_k => A_sigma in cal(F)_tau forall A_sigma in cal(F)_sigma => cal(F)_sigma subset.eq cal(F)_tau. quad qed$
 ]
 
-3. Let $Lambda in cal(F)_tau$ and define #h(1fr)
+3. Let $Lambda in cal(F)_tau$ and define
 
    $ sigma_Lambda (omega) := cases(
      tau(omega) & "if" omega in Lambda\,,
@@ -181,7 +181,7 @@ where we use the convention that $inf diameter = +infinity.$
   - $k = 1, ..., T-1$: ${tau <= k} = {omega in Omega : tau(omega) <= k} = union_(j=1)^k {Y_j > 1} in cal(F)_k.$
 ]
 
-2. Prove that $phi = (phi^0, theta.alt)$, where #h(1fr)
+2. Prove that $phi = (phi^0, theta.alt)$, where
   $
   phi^0_0 = 0, quad phi^0_k := bb(1)_{k<=tau} quad "for" k=1, ..., T,\
   theta.alt_0 = 0, quad theta.alt_k := -bb(1)_{k<=tau} quad "for" k=1, ..., T,

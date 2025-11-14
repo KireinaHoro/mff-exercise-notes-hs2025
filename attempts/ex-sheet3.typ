@@ -91,7 +91,7 @@ We consider the filtration
 
 $ cal(F)_0 := {diameter, Omega}, quad cal(F)_1 := sigma(|Z|), quad cal(F)_k := sigma(Z) quad "for" k=2,3,... $
 
-1. For any $n in NN$, we define #h(1fr)
+1. For any $n in NN$, we define
    $ tau_n := bb(1)_{|Z|>n} + infinity bb(1)_{|Z|<=n}. $
    Prove that $tau_n$ is a stopping time.  Compute the limit $lim_(n->infinity) tau_n$.
 
