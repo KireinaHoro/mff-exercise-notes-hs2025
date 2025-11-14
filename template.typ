@@ -294,6 +294,7 @@
 // If you want to add or modify other global Settings, please do so here
 #let note_page(title, author, professor, creater, time, abstract, body) = {
   set document(title: title, author: author)
+  set enum(numbering: "(a)(i)")
   set par(justify: true)
   show math.equation.where(block: true) :it=>block(
   width: 100%,
@@ -310,3 +311,6 @@
 // Commonly used symbols
 #let naeq = $eq.est$
 #let tha = $theta.alt$
+
+#let al = $chevron.l$
+#let ar = $chevron.r$

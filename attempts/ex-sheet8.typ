@@ -84,7 +84,7 @@ $
   - submartingale: $g(m, sigma) >= 1 => m + 1/2 sigma^2 >= 0 => m >= -1/2 sigma^2;$
   - martingale: $g(m, sigma) = 1 => m + 1/2 sigma^2 = 0 => m = -1/2 sigma^2.$
 
-  _Note to TA: can we directly invoke the moment-generating function?  Or do we have to calculate $E[sigma(W_t-W_u)]$ as an integral?_
+  _Note to TA: can we directly invoke the moment-generating function?  Or do we have to calculate $E[exp(sigma(W_t-W_u))]$ as an integral?_
 ]
 
 3. Suppose that $S$ is a martingale.  Show that
@@ -114,6 +114,10 @@ $
   &= f(W_u). quad qed$
 ]
 
+#feedback[
+  Need to prove that $(f(W_t))_(t>=0)$ is adapted!
+]
+
 2. Given a martingale $(M_t)_(t>=0)$ and a measurable function $g: RR_+ -> RR$, show that the process
   $
     (M_t + g(t))_(t>=0)
@@ -128,6 +132,10 @@ $
   To have a submartingale $<=> psi(g) = g(t) - g(u) > 0 <=> g$ is increasing.  $qed$
 ]
 
+#feedback[
+  Show adaptedness and integrability!
+]
+
 3. Show that the following processes are submartingales, but not martingales:
   1. $W^2$.
   #attempt[
@@ -139,6 +147,11 @@ $
 
     Hence $W^2$ is a submartingale but not martingale. $qed$
   ]
+  
+  #feedback[
+    If showing submartingale directly, need to show integrability and adaptedness.  Alternatively, use the conclusions from sub questions before:
+    - $x |-> x^2$ is convex.
+  ]
 
   2. $e^(alpha W)$ for any $alpha in RR$.
 
@@ -149,4 +162,8 @@ $
     &= exp(1/2 alpha^2 (t-u)) > 1.$
 
     Hence $exp(alpha W)$ is a submartingale but not martingale. $qed$
+  ]
+  
+  #feedback[
+    Same as above, use $x |-> exp(alpha x)$ is convex.
   ]
