@@ -33,6 +33,14 @@
   Hence $Z_t$ is not a BM in $FF. quad qed$
 ]
 
+#feedback[
+  Integral computed wrong!
+
+  $
+    integral_s^t 1/u dd(u) = log(t)-log(s).
+  $
+]
+
 2. Let $t >= 0$.  Prove, without explicitly computing the values, that
   $
     E[sup_(s in [0,t]) W_s] = sqrt(t) E[sup_(s in [0,1]) W_s].
@@ -44,6 +52,10 @@
     &ouset(=, d) sup_(s in [0,1]) sqrt(t) dot W_s.
   $
   Hence the equality holds. $qed$
+]
+
+#feedback[
+  Need to explain the $ouset(=, d)$ step further.
 ]
 
 #exercise() Let $W = (W_t)_(t>=0)$ be a Brownian motion defined on some probability space $(Omega, cal(F), P)$ with a filtration $FF := (cal(F)_t)_(t>=0)$ satisfying the usual conditions.  For some constants $S_0 > 0, m in RR$ and $sigma > 0$, we define the geometric Brownian motion $S = (S_t)_(t>=0)$ as
@@ -67,6 +79,10 @@ $
   - $limsup_(t->infinity) S_t = S_0 limsup_(t->infinity) exp(sigma W_t) = infinity$.
 
   Hence the limit does not exist.
+]
+
+#feedback[
+  Do not use $f(dot)$ to denote a random variable -- it's usually a deterministic function.  Use something like $A_t$
 ]
 
 2. Under which conditions on $m$ and $sigma$ is $S$ a sub-/super-/martingale?
