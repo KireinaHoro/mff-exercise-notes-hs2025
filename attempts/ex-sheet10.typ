@@ -65,6 +65,31 @@ $
 
   Thus $sup_(t in (0,infinity)) E[(A^m_t)^2] = infinity, A^m in.not cal(M)_0^2. quad qed$ 
 ]
+
+#feedback[
+  The integral being a true martingale is not trivial!  Take stopping times $tau_n := n, n in NN$.  Prove that $W^m bb(1)_(sr 0, tau_n  sr)  in L^2(W)$:
+
+  $
+    E[integral_0^infinity (W^m_s bb(1)_( sr 0, tau_n sr )(s))^2 dd(s)] = E[integral_0^n W^(2m)_s dd(s)] = integral^n_0 E[W^(2m)_s] dd(s) < infinity.
+  $
+  
+  Hence $integral_0^dot W^m_s dd(s)$ is a true martignale on $[0, infinity)$.
+  
+  The *Fubini's lemma* allows us to swap the integral and expectation.  The *Ito's isometry* allows us to change the integrator:
+
+  $
+    E[integral^t_0 eta^2 dd(\[M]_s)] = E[(integral_0^t eta dd(M_s))^2]
+  $
+  
+  Proving that the integral is not in $cal(M)^2_0$, we can't use the isometry directly since the isometry only applies to martingales in $M^2_0$.  We have to stop the process:
+
+  $
+    sup_(t>=0) E[(integral^t_0 W^m_s dd(W_s))^2] = lim_(n->infinity) E[(integral^n_0 W^m_s dd(W_s))^2]
+  $
+  
+  and only then can we apply the isometry to the stopped process $A^(tau_n)$ where $tau_n = n$.
+]
+
 2. For any local martingale $M = (M_t)_(t>=0)$ null at 0 and any stopping time $tau$, prove that $[M^tau] = [M]^tau$.
 
 #attempt[
@@ -100,6 +125,10 @@ $
   Hence $sup E[(integral_0^t s dd(W_s) + B_s)^2] <= sup E[B^2] + sup E[(integral s dd(W_s))^2] < infinity.  quad qed$
 ]
 
+#feedback[
+  We can directly use the result: if $M in cal(M)^2_0, H in L^2(M)$, then $integral_0^dot H_s dd(M_s) in cal(M)^2_0.$  
+]
+
 2. Prove that $[X]_t = t^3/3 + t quad P$-a.s., for $t>=0$.
 
 #attempt[
@@ -108,6 +137,10 @@ $
           &= integral_0^t s^2 dd(s) + t + integral_0^t s dd(\[W_s\, B_s])\
           &= t^3 / 3 + t. quad  qed
   $
+]
+
+#feedback[
+  Need to write $[X]_t = [integral^dot_0 s dd(W_s) + B]_t$ -- $t$ is not inside the bracket.
 ]
 
 3. Deduce that $E[(X_T)^2 | cal(F)_t] = X_t^2 + (T^3-t^3)/3 + (T-t) quad P$-a.s., for $t in [0,T].$
@@ -120,4 +153,8 @@ $
     &= X_t^2 + E[(B_T - B_t)^2] + E[(integral_t^T s dd(W_s))^2] && quad (B perp W) \
     &= X_t^2 + (T-t) + (T^3-t^3)/3.  quad qed
   $
+]
+
+#feedback[
+  Easier way is to notice that $X^2-[X]$ is a true martingale, hence $E[X^2_T - [X]_T | cal(F)_t] = X^2_t - [X]_t$.
 ]

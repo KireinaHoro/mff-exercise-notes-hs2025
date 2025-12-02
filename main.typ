@@ -22,3 +22,4 @@
 #include "ex6.typ"
 #include "ex8.typ"
 #include "ex9.typ"
+#include "ex11.typ"

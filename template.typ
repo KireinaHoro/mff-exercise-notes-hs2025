@@ -314,3 +314,6 @@
 
 #let al = $chevron.l$
 #let ar = $chevron.r$
+
+#let sl = $bracket.l.stroked$
+#let sr = $bracket.r.stroked$
