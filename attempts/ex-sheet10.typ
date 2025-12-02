@@ -30,12 +30,20 @@ $
   _Note to TA: somehow I didn't use the right continuity of the filtration -- what's wrong?_
 ]
 
+#feedback[
+  The equation does not work! $tau = t$ is in LHS but not RHS.  We can only show ${tau < t}$ is equal to RHS.  Then use the filtration being RC to fill in $tau = t$.
+]
+
 2. Compute the probabilities $P[tau > 0]$ and $P[tau < infinity]$.
 
 #attempt[
   $P[tau > 0] = 1 - P[tau = 0] = 1 - P[W_0 > b] = 1.$
 
   $P[tau < infinity] = 1 - P[tau = infinity] = 1 - P[W_t <= b "for all" t] = 1.$
+]
+
+#feedback[
+  Same issue: $tau = 0$ for $tau := inf{t>0: C(t)}$ does not imply  $C(0)$ -- could be only $C(0_+)$ is true.  need to use RC of the filtration.
 ]
 
 3. Find a predictable process $H = (H_t)_(t >= 0)$ satisfying both following properties:
@@ -104,6 +112,10 @@ $
 
   $M^(tau_n)$ is a bounded martingale, hence $[M^(tau_n)]^tau = [(M^(tau_n))^tau] = [(M^tau)^(tau_n)]$.
   Take $n->infinity$ and apply M.C.T, we have $[M^tau]= [M]^tau$ when $M$ is a local martingale. $qed$
+]
+
+#feedback[
+  MCT does not apply directly since $M^(tau_n)$ need not be increasing wrt. $n$.
 ]
 
 #exercise() Consider a probability space $(Omega, cal(F), P)$ with a filtration $FF=(cal(F)_t)_(t>=0)$ satisfying the usual conditions.  Let $W = (W_t)_(t>=0)$ and $B = (B_t)_(t>=0)$ be two independent Brownian motions.  Fix some constant $T > 0$.
