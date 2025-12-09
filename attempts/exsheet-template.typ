@@ -24,6 +24,18 @@
   width: 100%,
   align(center, it)
   )
+
+  show ref: it => {
+    let eq = math.equation
+    let el = it.element
+    // Skip all other references.
+    if el == none or el.func() != eq { return it }
+    // Override equation references.
+    link(el.location(), numbering(
+      el.numbering,
+      ..counter(eq).at(el.location())
+    ))
+  }
   
   let counter = counter("Exercise")
   counter.update((number, 1))
