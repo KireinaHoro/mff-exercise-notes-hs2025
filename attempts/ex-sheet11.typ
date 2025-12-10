@@ -107,6 +107,10 @@
   $integral_0^t f''(W_s) dd(s) = 0 quad forall t > 0 => f''(W_t) equiv 0 => f''(x) equiv 0 => exists alpha, beta in RR : f(x) = alpha x + beta. quad qed$
 ]
 
+#feedback[
+  Need to explain more why $f''(W_t) equiv 0 => f''(x) equiv 0$: since $limsup W = infinity, liminf W = -infinity quad P$-a.s. and that $W$ is continuous, $forall x in RR, exists t "s.t." W_t = x quad P$-a.s.  Hence $f''(x) = 0$ a.e.  Since $f''$ is continuous, $f''(x) equiv 0$.
+]
+
 4. Using Itô's formula, establish which of the following processes are local martingales:
 - $(sin W_t - cos W_t)_(t>=0)$.
   #attempt[
