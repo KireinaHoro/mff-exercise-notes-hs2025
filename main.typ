@@ -24,3 +24,4 @@
 #include "ex9.typ"
 #include "ex11.typ"
 #include "ex12.typ"
+#include "ex13.typ"
